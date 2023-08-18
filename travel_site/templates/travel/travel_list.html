@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Travel List{% endblock %}
+
+{% block content %}
+<h2>Welcome {{ user.username }}!</h2>
+
+<h3>Travel List</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for travel in travels %}
+        <tr>
+            <td><a href="{% url 'detail_travel' travel.id %}">{{ travel.destination }}</a></td>
+            <td>{{ travel.date_from }}</td>
+            <td>{{ travel.date_to }}</td>
+            <td>{{ travel.description }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Join Travel</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Do you want to join?</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for travel in others_travels %}
+        <tr>
+            <td>{{ travel.destination }}</td>
+            <td>{{ travel.date_from }}</td>
+            <td>{{ travel.date_to }}</td>
+            <td>{{ travel.description }}</td>
+            <td><a href="{% url 'join_travel' travel.id %}">Join</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

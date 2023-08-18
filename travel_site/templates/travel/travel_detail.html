@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Travel Detail{% endblock %}
+
+{% block content %}
+    <h2>Travel Detail</h2>
+    <strong>Destination:</strong> {{ travel.destination }}</a>
+    <p><strong>Description:</strong> {{ travel.description }}</p>
+    <p><strong>Date From:</strong> {{ travel.date_from }}</p>
+    <p><strong>Date To:</strong> {{ travel.date_to }}</p>
+    <p><strong>Planned By:</strong> {{ travel.planned_by.username }}</p>
+    <h3>Users Joining:</h3>
+    <ul>
+        {% for user in travel.users_joining.all %}
+            <li>{{ user.username }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

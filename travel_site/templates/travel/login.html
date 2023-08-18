@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 2px 2px 12px #aaa;
+    }
+</style>
+
+<div class="grid-container">
+    <div class="grid-item">
+        <h2>Sign Up</h2>
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            {{ form_signup.as_p }}
+            <p><button type="submit">Sign Up</button></p>
+        </form>
+    </div>
+
+    <div class="grid-item">
+        <h2>Login</h2>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form_login.as_p }}
+            <p><button type="submit">Login</button></p>
+        </form>
+    </div>
+</div>
+{% endblock %}
