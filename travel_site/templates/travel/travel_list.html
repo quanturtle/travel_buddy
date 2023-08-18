@@ -31,7 +31,7 @@
 <table border="1">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>Organizer</th>
             <th>Destination</th>
             <th>Travel Start Date</th>
             <th>Travel End Date</th>
@@ -41,13 +41,15 @@
     <tbody>
         {% for travel in others_travels %}
         <tr>
+            <td>{{ travel.planned_by }}</td>
             <td>{{ travel.destination }}</td>
             <td>{{ travel.date_from }}</td>
             <td>{{ travel.date_to }}</td>
-            <td>{{ travel.description }}</td>
             <td><a href="{% url 'join_travel' travel.id %}">Join</a></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<button><a href="{% url 'add_travel' %}">Add Travel Plan</a></button>
 {% endblock %}
