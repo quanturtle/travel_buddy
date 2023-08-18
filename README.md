@@ -3,6 +3,12 @@ Django app para viajes
 
 ![Spec](images/c-travelbuddy.png)
 
+## Build
+```
+docker build -t travel_buddy .
+docker run -p 8000:8000 travel_buddy
+```
+
 ## Login
 ![Login](images/login.png)
 
