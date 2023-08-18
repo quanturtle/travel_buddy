@@ -24,6 +24,13 @@
         <h2>Sign Up</h2>
         <form method="post" action="{% url 'register' %}">
             {% csrf_token %}
+            
+            {% if form_signup.non_field_errors %}
+                <div class="errors">
+                    {{ form_signup.non_field_errors }}
+                </div>
+            {% endif %}
+
             {{ form_signup.as_p }}
             <p><button type="submit">Sign Up</button></p>
         </form>
@@ -33,6 +40,13 @@
         <h2>Login</h2>
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
+
+            {% if form_login.non_field_errors %}
+                <div class="errors">
+                    {{ form_login.non_field_errors }}
+                </div>
+            {% endif %}
+
             {{ form_login.as_p }}
             <p><button type="submit">Login</button></p>
         </form>

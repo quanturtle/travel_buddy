@@ -11,8 +11,16 @@ class SignUpForm(UserCreationForm):
     last_name = forms.CharField(label="Last Name", max_length=100)
     email = forms.EmailField(label="Email", max_length=100)
     username = forms.CharField(label="Username", max_length=100)
-    password1 = forms.CharField(label="Password", max_length=100)
-    password2 = forms.CharField(label="Confirm Password", max_length=100)
+    password1 = forms.CharField(
+        label="Password", 
+        max_length=100, 
+        widget=forms.PasswordInput(attrs={'title': 'Password should be at least 8 characters long.'})
+    )
+    password2 = forms.CharField(
+        label="Confirm Password", 
+        max_length=100, 
+        widget=forms.PasswordInput(attrs={'title': 'Please enter the same password as above.'})
+    )
 
 
 class AddTripForm(forms.Form):
